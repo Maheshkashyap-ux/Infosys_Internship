@@ -36,6 +36,7 @@ router = APIRouter(
 # GET ALL PREDICTIONS
 # ============================================================
 
+@router.get("", response_model=List[PredictionResponse])
 @router.get(
     "/",
     response_model=List[PredictionResponse]

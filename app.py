@@ -34,20 +34,19 @@ API_BASE_URL = os.getenv(
 REQUEST_TIMEOUT = 8
 
 
-@st.cache_data
 def get_login_bg_base64() -> str:
     paths = [
         os.path.join(
             os.path.dirname(__file__),
             "assets",
-            "login_bg.jpg",
+            "login_bg.png",
         ),
         os.path.join(
             os.path.dirname(__file__),
             "assets",
-            "login_bg.png",
+            "login_bg.jpg",
         ),
-        r"C:\Users\Premalatha N K\.gemini\antigravity-ide\brain\59e9bdc1-9050-4a83-aac4-702ac5701ff9\.user_uploaded\media_1788527977232.jpg",
+        r"C:\Users\Premalatha N K\.gemini\antigravity-ide\brain\2cb315ff-c089-43c7-a0d9-9a98406fb9a5\.user_uploaded\media_1788876319935.png",
     ]
     for bg_path in paths:
         if os.path.exists(bg_path):
@@ -125,23 +124,23 @@ render_html(
     <style>
 
         /* ==================================================
-           GLOBAL APP (Warm Espresso & Cream Foundation)
+           GLOBAL APP (Crimson-Rose & Crisp White Foundation)
            ================================================== */
 
         html {
             scroll-behavior: smooth;
-            scroll-padding-top: 25px;
+            scroll-padding-top: 140px !important;
         }
 
         .stApp {
-            background: #150f0c !important;
-            background-color: #150f0c !important;
+            background-color: #fff5f7 !important;
             background-image: 
-                radial-gradient(circle at 15% 15%, rgba(194, 125, 56, 0.12), transparent 45%),
-                radial-gradient(circle at 85% 25%, rgba(212, 163, 115, 0.08), transparent 45%),
-                radial-gradient(circle at 50% 80%, rgba(90, 50, 28, 0.14), transparent 50%),
-                linear-gradient(180deg, #120b08 0%, #17100d 40%, #1f140e 100%) !important;
-            color: #fdfbf7 !important;
+                radial-gradient(circle at 12% 10%, rgba(244, 43, 85, 0.18) 0%, transparent 42%),
+                radial-gradient(circle at 88% 14%, rgba(244, 43, 85, 0.13) 0%, transparent 45%),
+                radial-gradient(circle at 50% 85%, rgba(244, 43, 85, 0.08) 0%, transparent 55%),
+                linear-gradient(180deg, #ffffff 0%, #fff5f7 40%, #ffffff 100%) !important;
+            background-attachment: fixed !important;
+            color: #0f172a !important;
             min-height: 100vh !important;
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !important;
         }
@@ -165,7 +164,7 @@ render_html(
         .main .block-container {
             max-width: 1320px !important;
             width: 100% !important;
-            padding-top: 2.2rem !important;
+            padding-top: 135px !important;
             padding-bottom: 5rem !important;
             padding-left: clamp(2rem, 4.5vw, 4rem) !important;
             padding-right: clamp(2rem, 4.5vw, 4rem) !important;
@@ -187,14 +186,57 @@ render_html(
             display: none;
         }
 
+        /* Constant Fixed Header & Navigation Bar (Centered to match body content) */
+        div[class*="st-key-factory_header_sticky"] {
+            position: fixed !important;
+            top: 0 !important;
+            left: 0 !important;
+            right: 0 !important;
+            width: 100vw !important;
+            z-index: 999999 !important;
+            background: rgba(255, 255, 255, 0.96) !important;
+            backdrop-filter: blur(20px) !important;
+            -webkit-backdrop-filter: blur(20px) !important;
+            border-bottom: 1px solid rgba(244, 43, 85, 0.16) !important;
+            box-shadow: 0 4px 24px rgba(244, 43, 85, 0.08) !important;
+            padding: 0.35rem 0 0.5rem 0 !important;
+            margin: 0 !important;
+            display: flex !important;
+            flex-direction: column !important;
+            align-items: center !important;
+            box-sizing: border-box !important;
+        }
+
+        div[class*="st-key-factory_header_sticky"] > div,
+        div[class*="st-key-factory_header_sticky"] [data-testid="stVerticalBlockBorderWrapper"],
+        div[class*="st-key-factory_header_sticky"] [data-testid="stVerticalBlock"] {
+            max-width: 1320px !important;
+            width: 100% !important;
+            margin-left: auto !important;
+            margin-right: auto !important;
+            box-sizing: border-box !important;
+            gap: 0.25rem !important;
+        }
+
+        div[class*="st-key-factory_header_sticky"] .factory-header-bar,
+        div[class*="st-key-factory_header_sticky"] [data-testid="stHorizontalBlock"] {
+            max-width: 1320px !important;
+            width: 100% !important;
+            margin-left: auto !important;
+            margin-right: auto !important;
+            padding-left: clamp(2rem, 4.5vw, 4rem) !important;
+            padding-right: clamp(2rem, 4.5vw, 4rem) !important;
+            box-sizing: border-box !important;
+        }
+
         .factory-header-bar {
             width: 100%;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 0.75rem 0 1rem 0;
-            margin-bottom: 0.4rem;
-            border-bottom: 1px solid rgba(212, 163, 115, 0.12);
+            padding: 0.2rem 0 0.45rem 0;
+            margin-bottom: 0.15rem;
+            border-bottom: 1px solid rgba(244, 43, 85, 0.12);
         }
 
         .header-left {
@@ -204,14 +246,14 @@ render_html(
         }
 
         .header-brand-title {
-            color: #fdfbf7;
+            color: #f42b55;
             font-size: 1.5rem;
             font-weight: 850;
             letter-spacing: -0.03em;
         }
 
         .header-brand-sub {
-            color: #d5c6b6;
+            color: #64748b;
             font-size: 0.88rem;
             font-weight: 500;
         }
@@ -223,7 +265,7 @@ render_html(
         }
 
         .header-platform-note {
-            color: #d5c6b6;
+            color: #64748b;
             font-size: 0.88rem;
             font-weight: 500;
         }
@@ -233,8 +275,8 @@ render_html(
             width: 36px;
             height: 36px;
             border-radius: 50%;
-            background: rgba(212, 163, 115, 0.06);
-            border: 1px solid rgba(212, 163, 115, 0.18);
+            background: rgba(244, 43, 85, 0.06);
+            border: 1px solid rgba(244, 43, 85, 0.2);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -243,8 +285,8 @@ render_html(
         }
 
         .header-icon-btn:hover {
-            background: rgba(184, 115, 51, 0.18);
-            border-color: rgba(212, 163, 115, 0.45);
+            background: rgba(244, 43, 85, 0.14);
+            border-color: #f42b55;
         }
 
         .header-badge-dot {
@@ -254,16 +296,16 @@ render_html(
             width: 7px;
             height: 7px;
             border-radius: 50%;
-            background: #ef4444;
-            box-shadow: 0 0 6px #ef4444;
+            background: #f42b55;
+            box-shadow: 0 0 6px #f42b55;
         }
 
         .header-profile-badge {
             width: 36px;
             height: 36px;
             border-radius: 50%;
-            background: rgba(184, 115, 51, 0.18);
-            border: 1px solid rgba(212, 163, 115, 0.35);
+            background: rgba(244, 43, 85, 0.08);
+            border: 1px solid rgba(244, 43, 85, 0.28);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -272,11 +314,10 @@ render_html(
         }
 
         .header-profile-badge:hover {
-            border-color: #dfba89;
-            box-shadow: 0 0 14px rgba(194, 125, 56, 0.5);
+            border-color: #f42b55;
+            box-shadow: 0 0 14px rgba(244, 43, 85, 0.4);
         }
 
-        /* Nav Pills Container */
         .factory-nav-container {
             display: flex;
             align-items: center;
@@ -289,47 +330,102 @@ render_html(
             display: inline-flex;
             align-items: center;
             gap: 0.35rem;
-            padding: 0.45rem 0.72rem;
+            padding: 0.45rem 0.72rem !important;
             border-radius: 8px;
-            background: rgba(212, 163, 115, 0.05);
-            border: 1px solid rgba(212, 163, 115, 0.14);
-            color: #d5c6b6 !important;
+            background: #ffffff;
+            border: 1px solid rgba(244, 43, 85, 0.18) !important;
+            color: #475569 !important;
             text-decoration: none !important;
-            font-size: 0.82rem;
-            font-weight: 550;
-            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-            white-space: nowrap;
-            flex-shrink: 0;
+            font-size: 0.82rem !important;
+            font-weight: 550 !important;
+            line-height: 1 !important;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.03);
+            transition: background 0.2s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+            box-sizing: border-box !important;
+            height: 34px !important;
+            max-height: 34px !important;
+            white-space: nowrap !important;
+            flex-shrink: 0 !important;
+        }
+
+        .factory-nav-btn img {
+            display: inline-block;
+            vertical-align: middle;
+            transition: filter 0.2s ease;
+            filter: none;
         }
 
         .factory-nav-btn:hover {
-            background: rgba(184, 115, 51, 0.2);
-            border-color: rgba(212, 163, 115, 0.45);
-            color: #fdfbf7 !important;
-            transform: translateY(-1px);
-            box-shadow: 0 4px 14px rgba(184, 115, 51, 0.25);
+            border-color: #f42b55 !important;
+            color: #f42b55 !important;
+            background: #fff0f3 !important;
         }
 
+        .factory-nav-btn:hover img {
+            filter: brightness(0) saturate(100%) invert(26%) sepia(88%) saturate(3475%) hue-rotate(334deg) brightness(98%) contrast(96%);
+        }
+
+        .factory-nav-btn.active,
         .factory-nav-btn.nav-item-active {
-            background: #b87333 !important;
-            border-color: #d48f4a !important;
-            color: #fffdfa !important;
-            box-shadow: 0 4px 18px rgba(184, 115, 51, 0.45) !important;
+            background: linear-gradient(135deg, #f42b55 0%, #e11d48 100%) !important;
+            border: 1px solid #f42b55 !important;
+            color: #ffffff !important;
+            box-shadow: 0 4px 14px rgba(244, 43, 85, 0.35) !important;
+            transform: none !important;
+            height: 34px !important;
+            max-height: 34px !important;
+            padding: 0.45rem 0.72rem !important;
+            font-size: 0.82rem !important;
+            font-weight: 550 !important;
+            box-sizing: border-box !important;
         }
 
-        [class*="st-key-sticky_navigation"] {
-            position: fixed !important;
-            top: 0;
-            left: 0;
-            right: 0;
-            width: 100%;
-            z-index: 1000;
-            padding: 0.45rem clamp(1rem, 2.2vw, 2rem) 0.55rem;
-            box-sizing: border-box;
-            background: rgba(21, 15, 12, 0.96);
-            backdrop-filter: blur(14px);
-            box-shadow: 0 8px 22px rgba(0, 0, 0, 0.4);
-            border-bottom: 1px solid rgba(212, 163, 115, 0.1);
+        .factory-nav-btn.active *,
+        .factory-nav-btn.nav-item-active * {
+            color: #ffffff !important;
+            stroke: #ffffff !important;
+        }
+
+        .factory-nav-btn.active img,
+        .factory-nav-btn.nav-item-active img {
+            filter: brightness(0) invert(1) !important;
+        }
+
+        /* Top Action Buttons (Refresh & Logout) */
+        div[class*="st-key-top_refresh"] button,
+        div[class*="st-key-top_logout"] button {
+            background: #ffffff !important;
+            color: #334155 !important;
+            border: 1px solid rgba(244, 43, 85, 0.28) !important;
+            border-radius: 8px !important;
+            font-size: 0.82rem !important;
+            font-weight: 600 !important;
+            letter-spacing: 0.01em !important;
+            padding: 0.35rem 0.65rem !important;
+            min-height: 34px !important;
+            height: 34px !important;
+            white-space: nowrap !important;
+            display: inline-flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03) !important;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
+        }
+
+        div[class*="st-key-top_refresh"] button:hover {
+            background: #fff5f7 !important;
+            color: #f42b55 !important;
+            border-color: #f42b55 !important;
+            box-shadow: 0 4px 14px rgba(244, 43, 85, 0.16) !important;
+            transform: translateY(-1px) !important;
+        }
+
+        div[class*="st-key-top_logout"] button:hover {
+            background: #fff0f3 !important;
+            color: #ef4444 !important;
+            border-color: #ef4444 !important;
+            box-shadow: 0 4px 14px rgba(239, 68, 68, 0.16) !important;
+            transform: translateY(-1px) !important;
         }
 
 
@@ -337,7 +433,6 @@ render_html(
            RESPONSIVE PRODUCTION LOGIN EXPERIENCE (FactoryOps)
            ================================================== */
 
-        /* Hide Streamlit default header, footer & padding */
         header[data-testid="stHeader"],
         div[data-testid="stToolbar"],
         #MainMenu,
@@ -347,7 +442,7 @@ render_html(
         }
 
         .stApp {
-            overflow-x: hidden !important;
+            overflow-x: visible !important;
         }
 
         .login-backdrop-overlay {
@@ -356,12 +451,11 @@ render_html(
             left: 0;
             width: 100vw;
             height: 100vh;
-            background: #120b08;
+            background: linear-gradient(135deg, #f42b55 0%, #ff4d6d 25%, #ffffff 80%, #fff0f3 100%);
             z-index: 9990;
             pointer-events: none;
         }
 
-        /* Split Screen Container - Rigid 50/50 Side-by-Side */
         [class*="st-key-login_frame"] {
             position: fixed !important;
             top: 0 !important;
@@ -376,7 +470,7 @@ render_html(
             border-radius: 0 !important;
             box-shadow: none !important;
             overflow: hidden !important;
-            background: #120b08 !important;
+            background: #ffffff !important;
             padding: 0 !important;
         }
 
@@ -392,7 +486,6 @@ render_html(
             align-items: stretch !important;
         }
 
-        /* Left Industrial Background Column - 50vw */
         [class*="st-key-login_frame"] [data-testid="stColumn"]:nth-of-type(1) {
             padding: 0 !important;
             height: 100vh !important;
@@ -415,56 +508,59 @@ render_html(
             display: flex !important;
             flex-direction: column !important;
             justify-content: flex-end !important;
-            padding: clamp(2.5rem, 5vw, 5rem) !important;
+            padding: clamp(2rem, 4.5vw, 4.5rem) !important;
             box-sizing: border-box !important;
             position: relative;
         }
 
         .login-hero-container::before {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(180deg, rgba(18, 11, 8, 0.05) 0%, rgba(18, 11, 8, 0.2) 50%, rgba(18, 11, 8, 0.72) 100%);
-            pointer-events: none;
-            z-index: 1;
+            display: none !important;
         }
 
         .login-hero-content-box {
             position: relative;
             z-index: 2;
-            max-width: 540px;
+            max-width: 500px;
+            background: rgba(255, 255, 255, 0.88);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1.5px solid rgba(244, 43, 85, 0.28);
+            border-radius: 20px;
+            padding: 2rem 2.4rem;
+            box-shadow: 0 20px 45px rgba(225, 29, 72, 0.12), 0 4px 14px rgba(0, 0, 0, 0.04);
         }
 
         .hero-title-brand {
-            color: #fdfbf7;
-            font-size: clamp(2.8rem, 4.2vw, 4.8rem);
+            color: #0f172a;
+            font-size: clamp(2.2rem, 3.2vw, 3.4rem);
             font-weight: 850;
-            letter-spacing: -0.045em;
-            line-height: 1.05;
-            margin-bottom: 0.5rem;
-            text-shadow: 0 4px 24px rgba(0, 0, 0, 0.8), 0 2px 8px rgba(0, 0, 0, 0.6);
+            letter-spacing: -0.04em;
+            line-height: 1.08;
+            margin-bottom: 0.4rem;
+        }
+
+        .hero-title-brand span {
+            color: #f42b55;
         }
 
         .hero-divider-bar {
-            width: 52px;
-            height: 3px;
-            background: #c27d38;
-            margin-bottom: 1.2rem;
+            width: 48px;
+            height: 4px;
+            background: linear-gradient(90deg, #f42b55 0%, #fb7185 100%);
+            margin-bottom: 0.75rem;
             border-radius: 2px;
-            box-shadow: 0 0 12px rgba(194, 125, 56, 0.9);
+            box-shadow: 0 2px 8px rgba(244, 43, 85, 0.4);
         }
 
         .hero-tagline-text {
-            color: #f3e5d8;
-            font-size: clamp(1.1rem, 1.4vw, 1.45rem);
-            font-weight: 500;
-            margin-bottom: 0.8rem;
-            line-height: 1.35;
+            color: #334155;
+            font-size: clamp(0.95rem, 1.1vw, 1.15rem);
+            font-weight: 600;
+            margin-bottom: 0;
+            line-height: 1.4;
             letter-spacing: -0.01em;
-            text-shadow: 0 2px 16px rgba(0, 0, 0, 0.8);
         }
 
-        /* Right Panel - Equal 50vw Width, Perfectly Centered */
         [class*="st-key-login_frame"] [data-testid="stColumn"]:nth-of-type(2) {
             padding: 0 !important;
             height: 100vh !important;
@@ -473,7 +569,7 @@ render_html(
             width: 50vw !important;
             min-width: 50vw !important;
             max-width: 50vw !important;
-            background: linear-gradient(160deg, #130c08 0%, #24160f 55%, #341e14 100%) !important;
+            background: linear-gradient(180deg, #ffffff 0%, #fff5f7 100%) !important;
             display: flex !important;
             flex-direction: column !important;
             justify-content: center !important;
@@ -494,7 +590,6 @@ render_html(
             margin: 0 !important;
         }
 
-        /* Seamless Centered Login Form Block */
         [class*="st-key-login_form_side"] {
             width: 100% !important;
             max-width: 440px !important;
@@ -511,16 +606,16 @@ render_html(
         }
 
         .login-form-eyebrow {
-            color: #c27d38;
+            color: #f42b55;
             font-size: 0.95rem;
-            font-weight: 500;
+            font-weight: 600;
             margin-bottom: 0.35rem;
             text-align: left !important;
             width: 100% !important;
         }
 
         .login-form-heading {
-            color: #fdfbf7;
+            color: #0f172a;
             font-size: 2.6rem;
             font-weight: 750;
             letter-spacing: -0.03em;
@@ -531,14 +626,13 @@ render_html(
         }
 
         .login-form-subtitle {
-            color: #d5c6b6;
+            color: #64748b;
             font-size: 0.98rem;
             margin-bottom: 2rem;
             text-align: left !important;
             width: 100% !important;
         }
 
-        /* Portal Radio Buttons - Clean Cognac Radio Selection */
         [class*="st-key-login_portal"] {
             margin-bottom: 1.8rem !important;
             width: 100% !important;
@@ -562,36 +656,33 @@ render_html(
             display: flex !important;
             align-items: center !important;
             gap: 0.65rem !important;
-            color: #fdfbf7 !important;
+            color: #334155 !important;
             font-size: 1rem !important;
             font-weight: 500 !important;
             cursor: pointer !important;
         }
 
         [class*="st-key-login_portal"] div[role="radiogroup"] label p {
-            color: #fdfbf7 !important;
+            color: #334155 !important;
             font-size: 1rem !important;
         }
 
-        /* Radio outer ring */
         div[data-testid="stRadio"] [role="radiogroup"] label > div > div:nth-child(1),
         div[data-testid="stRadio"] [role="radiogroup"] input:checked ~ div:nth-of-type(1),
         [class*="st-key-login_portal"] div[role="radiogroup"] [data-baseweb="radio"] div {
-            border-color: #c27d38 !important;
+            border-color: #f42b55 !important;
             background-color: transparent !important;
         }
 
-        /* Radio active inner dot */
         div[data-testid="stRadio"] div[class*="etak9228"],
         div[data-testid="stRadio"] [role="radiogroup"] input:checked ~ div:nth-of-type(2),
         div[data-testid="stRadio"] [role="radiogroup"] label > div > div:nth-of-type(2),
         div[data-testid="stRadio"] [role="radiogroup"] div[style*="255, 75, 75"] {
-            background-color: #b87333 !important;
-            background: #b87333 !important;
-            border-color: #b87333 !important;
+            background-color: #f42b55 !important;
+            background: #f42b55 !important;
+            border-color: #f42b55 !important;
         }
 
-        /* Form Controls & Inputs */
         div[data-testid="stForm"] {
             border: 0 !important;
             padding: 0 !important;
@@ -606,9 +697,9 @@ render_html(
 
         div[data-testid="stForm"] [data-testid="stTextInput"] label,
         div[data-testid="stForm"] [data-testid="stTextInput"] label p {
-            color: #e8d6c0 !important;
+            color: #334155 !important;
             font-size: 0.92rem !important;
-            font-weight: 500 !important;
+            font-weight: 600 !important;
             margin-bottom: 0.45rem !important;
             text-align: left !important;
             display: block !important;
@@ -616,13 +707,12 @@ render_html(
             opacity: 1 !important;
         }
 
-        /* Textbox Input Container - Distinct Warm Cognac Brown Border */
         div[data-testid="stTextInput"] div[data-baseweb="input"] {
-            background-color: rgba(32, 22, 16, 0.85) !important;
-            background: rgba(32, 22, 16, 0.85) !important;
-            border: 1.5px solid #b87333 !important;
+            background-color: #ffffff !important;
+            background: #ffffff !important;
+            border: 1.5px solid rgba(244, 43, 85, 0.3) !important;
             border-radius: 12px !important;
-            box-shadow: none !important;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04) !important;
             height: 50px !important;
             min-height: 50px !important;
             box-sizing: border-box !important;
@@ -634,16 +724,15 @@ render_html(
         }
 
         div[data-testid="stTextInput"] div[data-baseweb="input"]:hover {
-            border-color: #c27d38 !important;
-            box-shadow: 0 0 12px rgba(194, 125, 56, 0.35) !important;
+            border-color: #f42b55 !important;
+            box-shadow: 0 0 12px rgba(244, 43, 85, 0.2) !important;
         }
 
         div[data-testid="stTextInput"] div[data-baseweb="input"]:focus-within {
-            border-color: #d48f4a !important;
-            box-shadow: 0 0 16px rgba(212, 143, 74, 0.45) !important;
+            border-color: #f42b55 !important;
+            box-shadow: 0 0 14px rgba(244, 43, 85, 0.3) !important;
         }
 
-        /* Inner wrappers transparent to reveal dark mocha container fill */
         div[data-testid="stTextInput"] div[data-baseweb="input"] div,
         div[data-testid="stTextInput"] div[data-baseweb="base-input"] {
             border: none !important;
@@ -666,9 +755,9 @@ render_html(
         input[type="password"] {
             background-color: transparent !important;
             background: transparent !important;
-            color: #ffffff !important;
-            -webkit-text-fill-color: #ffffff !important;
-            caret-color: #ffffff !important;
+            color: #0f172a !important;
+            -webkit-text-fill-color: #0f172a !important;
+            caret-color: #f42b55 !important;
             border: none !important;
             outline: none !important;
             box-shadow: none !important;
@@ -686,39 +775,36 @@ render_html(
         div[data-baseweb="base-input"] input:focus,
         input[type="text"]:focus,
         input[type="password"]:focus {
-            color: #ffffff !important;
-            -webkit-text-fill-color: #ffffff !important;
-            caret-color: #ffffff !important;
+            color: #0f172a !important;
+            -webkit-text-fill-color: #0f172a !important;
+            caret-color: #f42b55 !important;
         }
 
         div[data-testid="stTextInput"] input::placeholder {
-            color: #a89685 !important;
-            -webkit-text-fill-color: #a89685 !important;
+            color: #94a3b8 !important;
+            -webkit-text-fill-color: #94a3b8 !important;
             opacity: 0.9 !important;
         }
 
-        /* Username Input - Left User SVG Icon */
         div[data-testid="stTextInput"] input[aria-label="Username"] {
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='%23c27d38' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2'/%3E%3Ccircle cx='12' cy='7' r='4'/%3E%3C/svg%3E") !important;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='%23f42b55' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2'/%3E%3Ccircle cx='12' cy='7' r='4'/%3E%3C/svg%3E") !important;
             background-repeat: no-repeat !important;
             background-position: 14px center !important;
             padding-left: 44px !important;
         }
 
-        /* Password Input - Left Lock SVG Icon */
         div[data-testid="stTextInput"] input[aria-label="Password"] {
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='%23c27d38' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect width='18' height='11' x='3' y='11' rx='2' ry='2'/%3E%3Cpath d='M7 11V7a5 5 0 0 1 10 0v4'/%3E%3C/svg%3E") !important;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='%23f42b55' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect width='18' height='11' x='3' y='11' rx='2' ry='2'/%3E%3Cpath d='M7 11V7a5 5 0 0 1 10 0v4'/%3E%3C/svg%3E") !important;
             background-repeat: no-repeat !important;
             background-position: 14px center !important;
             padding-left: 44px !important;
         }
 
-        /* Password Eye Toggle Icon */
         [data-testid="stTextInput"] button {
             border: none !important;
             outline: none !important;
             box-shadow: none !important;
-            color: #d48f4a !important;
+            color: #f42b55 !important;
             background: transparent !important;
             background-color: transparent !important;
             margin-right: 8px !important;
@@ -727,11 +813,10 @@ render_html(
         [data-testid="stTextInput"] button svg,
         [data-testid="stTextInput"] button path {
             fill: none !important;
-            stroke: #d48f4a !important;
-            color: #d48f4a !important;
+            stroke: #f42b55 !important;
+            color: #f42b55 !important;
         }
 
-        /* Sign In Button - Crisp Warm Cognac Button */
         div[data-testid="stFormSubmitButton"] {
             width: 100% !important;
             margin-top: 1rem !important;
@@ -742,15 +827,15 @@ render_html(
             width: 100% !important;
             height: 50px !important;
             min-height: 50px !important;
-            background: linear-gradient(180deg, #c27d38 0%, #a05a22 100%) !important;
-            background-color: #c27d38 !important;
+            background: linear-gradient(135deg, #f42b55 0%, #e11d48 100%) !important;
+            background-color: #f42b55 !important;
             border: none !important;
             outline: none !important;
             border-radius: 12px !important;
-            color: #fffdfa !important;
+            color: #ffffff !important;
             font-size: 1.05rem !important;
             font-weight: 600 !important;
-            box-shadow: 0 8px 24px rgba(184, 115, 51, 0.45) !important;
+            box-shadow: 0 8px 24px rgba(244, 43, 85, 0.4) !important;
             cursor: pointer !important;
             display: flex !important;
             align-items: center !important;
@@ -762,9 +847,9 @@ render_html(
 
         div[data-testid="stFormSubmitButton"] button:hover,
         button[data-testid="stBaseButton-primaryFormSubmit"]:hover {
-            background: linear-gradient(180deg, #d48f4a 0%, #ba6f2b 100%) !important;
-            background-color: #d48f4a !important;
-            box-shadow: 0 12px 30px rgba(194, 125, 56, 0.6) !important;
+            background: linear-gradient(135deg, #e11d48 0%, #be123c 100%) !important;
+            background-color: #e11d48 !important;
+            box-shadow: 0 12px 30px rgba(244, 43, 85, 0.55) !important;
             transform: translateY(-1px) !important;
         }
 
@@ -776,7 +861,7 @@ render_html(
             border: none !important;
             margin: 0 !important;
             padding: 0 !important;
-            color: #fffdfa !important;
+            color: #ffffff !important;
             font-size: 1.05rem !important;
             font-weight: 600 !important;
             display: inline-block !important;
@@ -785,7 +870,6 @@ render_html(
             line-height: 1 !important;
         }
 
-        /* Tablet & Mobile Media Queries */
         @media (max-width: 900px) {
             [class*="st-key-login_frame"] > [data-testid="stHorizontalBlock"] {
                 flex-direction: column !important;
@@ -798,7 +882,10 @@ render_html(
             .login-hero-container {
                 min-height: 280px !important;
                 height: 35vh !important;
-                padding: 1.5rem 2rem !important;
+                padding: 1.5rem !important;
+            }
+            .login-hero-content-box {
+                padding: 1.2rem 1.4rem !important;
             }
             [class*="st-key-login_frame"] [data-testid="stColumn"]:nth-of-type(2) {
                 min-height: auto !important;
@@ -818,13 +905,13 @@ render_html(
            ================================================== */
         .dashboard-hero-banner {
             width: 100%;
-            background: linear-gradient(135deg, rgba(38, 25, 18, 0.95) 0%, rgba(26, 17, 12, 0.95) 100%);
-            border: 1px solid rgba(212, 163, 115, 0.32);
+            background: linear-gradient(135deg, #f42b55 0%, #e11d48 55%, #be123c 100%);
+            border: 1px solid rgba(255, 255, 255, 0.3);
             border-radius: 20px;
             padding: 1.8rem 2.4rem;
             margin-top: 1rem;
             margin-bottom: 2.2rem;
-            box-shadow: 0 16px 45px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 245, 235, 0.08);
+            box-shadow: 0 16px 40px rgba(244, 43, 85, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.25);
             backdrop-filter: blur(16px);
             position: relative;
             overflow: hidden;
@@ -845,7 +932,7 @@ render_html(
         }
 
         .banner-kicker {
-            color: #e8c89b;
+            color: #ffe4e8;
             font-size: 0.78rem;
             font-weight: 800;
             text-transform: uppercase;
@@ -854,7 +941,7 @@ render_html(
         }
 
         .banner-main-title {
-            color: #fdfbf7;
+            color: #ffffff;
             font-size: clamp(2rem, 2.8vw, 2.6rem);
             font-weight: 850;
             letter-spacing: -0.035em;
@@ -865,13 +952,13 @@ render_html(
         .banner-accent-bar {
             width: 44px;
             height: 3px;
-            background: #c27d38;
+            background: #ffffff;
             border-radius: 2px;
-            box-shadow: 0 0 12px rgba(194, 125, 56, 0.8);
+            box-shadow: 0 0 12px rgba(255, 255, 255, 0.9);
         }
 
         .banner-subtitle {
-            color: #d5c6b6;
+            color: #ffe4e8;
             font-size: 0.95rem;
             font-weight: 400;
             line-height: 1.5;
@@ -890,8 +977,8 @@ render_html(
             width: clamp(200px, 22vw, 300px);
             height: auto;
             border-radius: 14px;
-            border: 1px solid rgba(212, 163, 115, 0.3);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+            border: 2px solid rgba(255, 255, 255, 0.4);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
             object-fit: cover;
         }
 
@@ -899,43 +986,41 @@ render_html(
         .factory-section {
             position: relative;
             width: 100%;
-            background: rgba(32, 22, 16, 0.88);
-            border: 1px solid rgba(212, 163, 115, 0.28);
-            border-radius: 20px;
-            padding: 1.8rem 2.2rem 2.2rem 2.2rem;
-            margin-bottom: 2.2rem;
-            backdrop-filter: blur(14px);
-            box-shadow: 0 14px 45px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 245, 235, 0.05);
-            overflow: hidden;
+            background: #ffffff;
+            border: 1px solid rgba(244, 43, 85, 0.16);
+            border-left: 4px solid #f42b55;
+            border-radius: 12px;
+            padding: 0.65rem 1.25rem;
+            margin-top: 1.6rem;
+            margin-bottom: 0.9rem;
+            box-shadow: 0 3px 12px rgba(244, 43, 85, 0.05);
             box-sizing: border-box;
+            display: flex;
+            align-items: center;
         }
 
         .section-header {
-            margin-bottom: 1.6rem;
+            margin: 0;
+            padding: 0;
             width: 100%;
-        }
-
-        .section-kicker {
-            color: #e8c89b;
-            font-size: 0.74rem;
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 0.12em;
-            margin-bottom: 0.25rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
         }
 
         .section-main-title {
-            color: #fdfbf7;
-            font-size: 1.85rem;
-            font-weight: 850;
-            letter-spacing: -0.03em;
-            line-height: 1.15;
+            color: #0f172a;
+            font-size: 1.35rem;
+            font-weight: 800;
+            letter-spacing: -0.025em;
+            line-height: 1.2;
+            margin: 0;
         }
 
         .section-divider {
             width: 100%;
             height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(212, 163, 115, 0.25), transparent);
+            background: linear-gradient(90deg, transparent, rgba(244, 43, 85, 0.22), transparent);
             margin: 1.8rem 0;
         }
 
@@ -944,43 +1029,43 @@ render_html(
            KPI METRIC CARDS (2 ROWS OF 5 CARDS)
            ================================================== */
         .kpi-card {
-            background: rgba(32, 22, 16, 0.88);
-            border: 1px solid rgba(212, 163, 115, 0.28);
-            border-radius: 16px;
-            padding: 1.15rem 1.25rem;
-            min-height: 112px;
+            background: #ffffff;
+            border: 1px solid rgba(244, 43, 85, 0.16);
+            border-radius: 14px;
+            padding: 0.9rem 1rem;
+            min-height: 92px;
             height: 100%;
             box-sizing: border-box;
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
+            justify-content: center;
             position: relative;
             overflow: hidden;
             backdrop-filter: blur(12px);
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.38), inset 0 1px 0 rgba(255, 245, 235, 0.04);
+            box-shadow: 0 4px 16px rgba(244, 43, 85, 0.06), 0 1px 3px rgba(0, 0, 0, 0.03);
             transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-            margin-bottom: 1.35rem;
+            margin-bottom: 1rem;
         }
 
         .kpi-card:hover {
-            transform: translateY(-3px);
-            border-color: rgba(226, 180, 130, 0.55);
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5), 0 0 20px rgba(194, 125, 56, 0.25);
-            background: rgba(44, 30, 22, 0.94);
+            transform: translateY(-2px);
+            border-color: rgba(244, 43, 85, 0.45);
+            box-shadow: 0 8px 24px rgba(244, 43, 85, 0.12);
+            background: #ffffff;
         }
 
         .kpi-top-row {
             display: flex;
             align-items: center;
-            gap: 0.85rem;
+            gap: 0.75rem;
             width: 100%;
             z-index: 2;
         }
 
         .kpi-icon-badge {
-            width: 38px;
-            height: 38px;
-            min-width: 38px;
+            width: 36px;
+            height: 36px;
+            min-width: 36px;
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -989,42 +1074,42 @@ render_html(
         }
 
         .kpi-badge-red {
-            background: rgba(239, 68, 68, 0.15);
+            background: rgba(239, 68, 68, 0.12);
             border: 1px solid rgba(239, 68, 68, 0.3);
             color: #ef4444;
         }
-        .kpi-badge-blue, .kpi-badge-cognac {
-            background: rgba(194, 125, 56, 0.16);
-            border: 1px solid rgba(194, 125, 56, 0.35);
-            color: #c27d38;
+        .kpi-badge-blue, .kpi-badge-cognac, .kpi-badge-rose {
+            background: rgba(244, 43, 85, 0.12);
+            border: 1px solid rgba(244, 43, 85, 0.3);
+            color: #f42b55;
         }
         .kpi-badge-green {
-            background: rgba(16, 185, 129, 0.15);
+            background: rgba(16, 185, 129, 0.12);
             border: 1px solid rgba(16, 185, 129, 0.3);
             color: #10b981;
         }
         .kpi-badge-orange {
-            background: rgba(245, 158, 11, 0.15);
+            background: rgba(245, 158, 11, 0.12);
             border: 1px solid rgba(245, 158, 11, 0.3);
             color: #f59e0b;
         }
         .kpi-badge-cyan {
-            background: rgba(194, 125, 56, 0.15);
-            border: 1px solid rgba(194, 125, 56, 0.3);
-            color: #c27d38;
+            background: rgba(6, 182, 212, 0.12);
+            border: 1px solid rgba(6, 182, 212, 0.3);
+            color: #06b6d4;
         }
         .kpi-badge-purple {
-            background: rgba(168, 85, 247, 0.15);
+            background: rgba(168, 85, 247, 0.12);
             border: 1px solid rgba(168, 85, 247, 0.3);
             color: #a855f7;
         }
         .kpi-badge-amber {
-            background: rgba(234, 179, 8, 0.15);
+            background: rgba(234, 179, 8, 0.12);
             border: 1px solid rgba(234, 179, 8, 0.3);
             color: #eab308;
         }
         .kpi-badge-pink {
-            background: rgba(236, 72, 153, 0.15);
+            background: rgba(236, 72, 153, 0.12);
             border: 1px solid rgba(236, 72, 153, 0.3);
             color: #ec4899;
         }
@@ -1032,32 +1117,44 @@ render_html(
         .kpi-info {
             display: flex;
             flex-direction: column;
+            justify-content: center;
+            min-width: 0;
+            flex: 1;
             z-index: 2;
         }
 
         .kpi-label {
-            color: #d5c6b6;
-            font-size: 0.76rem;
-            font-weight: 550;
+            color: #64748b;
+            font-size: 0.72rem;
+            font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 0.04em;
+            letter-spacing: 0.05em;
             line-height: 1.15;
             margin-bottom: 2px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
         .kpi-value {
-            color: #fdfbf7;
-            font-size: 1.55rem;
+            color: #0f172a !important;
+            font-size: 1.28rem;
             font-weight: 850;
-            letter-spacing: -0.03em;
-            line-height: 1.1;
+            letter-spacing: -0.02em;
+            line-height: 1.15;
+            margin-top: 1px;
+            display: flex;
+            align-items: baseline;
+            gap: 4px;
+            white-space: nowrap;
+            overflow: hidden;
         }
 
         .metric-unit {
-            font-size: 0.88rem;
-            font-weight: 500;
-            color: #d5c6b6;
-            margin-left: 2px;
+            font-size: 0.78rem;
+            font-weight: 600;
+            color: #f42b55;
+            letter-spacing: 0;
         }
 
         .kpi-bottom-row {
@@ -1073,13 +1170,13 @@ render_html(
         .kpi-delta {
             font-size: 0.78rem;
             font-weight: 600;
-            color: #d5c6b6;
+            color: #64748b;
             line-height: 1;
         }
 
         .kpi-red .kpi-value {
             color: #ef4444 !important;
-            text-shadow: 0 0 16px rgba(239, 68, 68, 0.35);
+            text-shadow: 0 0 16px rgba(239, 68, 68, 0.25);
         }
 
         .kpi-sparkline-wrap {
@@ -1089,7 +1186,7 @@ render_html(
             width: 125px;
             height: 40px;
             pointer-events: none;
-            opacity: 0.55;
+            opacity: 0.45;
             z-index: 1;
         }
 
@@ -1118,14 +1215,14 @@ render_html(
         }
 
         .health-title-text {
-            color: #fdfbf7;
+            color: #0f172a;
             font-size: 1.35rem;
             font-weight: 800;
             letter-spacing: -0.025em;
         }
 
         .health-subtitle-text {
-            color: #d5c6b6;
+            color: #64748b;
             font-size: 0.85rem;
             font-weight: 400;
         }
@@ -1136,10 +1233,10 @@ render_html(
         }
 
         .health-filter-pill {
-            background: rgba(212, 163, 115, 0.05);
-            border: 1px solid rgba(212, 163, 115, 0.15);
+            background: #ffffff;
+            border: 1px solid rgba(244, 43, 85, 0.2);
             border-radius: 8px;
-            color: #d5c6b6;
+            color: #475569;
             font-size: 0.82rem;
             font-weight: 500;
             padding: 6px 14px;
@@ -1151,27 +1248,27 @@ render_html(
         }
 
         .health-filter-pill:hover {
-            border-color: rgba(212, 163, 115, 0.4);
-            color: #fdfbf7;
-            background: rgba(184, 115, 51, 0.16);
+            border-color: #f42b55;
+            color: #f42b55;
+            background: #fff0f3;
         }
 
         .health-card {
-            background: rgba(32, 22, 16, 0.88);
-            border: 1px solid rgba(212, 163, 115, 0.28);
+            background: #ffffff;
+            border: 1px solid rgba(244, 43, 85, 0.16);
             border-radius: 16px;
             padding: 1.5rem 1.6rem;
             height: 100%;
             box-sizing: border-box;
             backdrop-filter: blur(12px);
-            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 245, 235, 0.05);
+            box-shadow: 0 8px 24px rgba(244, 43, 85, 0.06);
             display: flex;
             flex-direction: column;
             justify-content: space-between;
         }
 
         .health-chart-title {
-            color: #fdfbf7;
+            color: #0f172a;
             font-size: 1.05rem;
             font-weight: 750;
             letter-spacing: -0.015em;
@@ -1179,7 +1276,7 @@ render_html(
         }
 
         .health-chart-subtitle {
-            color: #d5c6b6;
+            color: #64748b;
             font-size: 0.82rem;
             font-weight: 400;
             margin-bottom: 0.9rem;
@@ -1212,7 +1309,7 @@ render_html(
             align-items: center;
             justify-content: space-between;
             padding: 0.35rem 0;
-            border-bottom: 1px solid rgba(212, 163, 115, 0.08);
+            border-bottom: 1px solid rgba(244, 43, 85, 0.08);
         }
 
         .legend-row:last-child {
@@ -1225,7 +1322,7 @@ render_html(
             gap: 0.6rem;
             font-size: 0.85rem;
             font-weight: 550;
-            color: #f7efe6;
+            color: #334155;
         }
 
         .legend-dot {
@@ -1239,13 +1336,13 @@ render_html(
         .legend-dot.red { background: #ef4444; box-shadow: 0 0 8px #ef4444; }
 
         .legend-value {
-            color: #fdfbf7;
+            color: #0f172a;
             font-size: 0.9rem;
             font-weight: 700;
         }
 
         .legend-percentage {
-            color: #d5c6b6;
+            color: #64748b;
             font-size: 0.8rem;
             font-weight: 400;
             margin-left: 2px;
@@ -1271,19 +1368,19 @@ render_html(
         }
 
         .metric-row-label {
-            color: #e8d6c0;
+            color: #334155;
             font-size: 0.84rem;
-            font-weight: 550;
+            font-weight: 600;
         }
 
         .metric-row-val {
-            color: #fdfbf7;
+            color: #0f172a;
             font-size: 0.88rem;
             font-weight: 700;
         }
 
         .metric-row-pct {
-            color: #d5c6b6;
+            color: #64748b;
             font-size: 0.78rem;
             font-weight: 400;
             margin-left: 3px;
@@ -1292,7 +1389,7 @@ render_html(
         .progress-track {
             width: 100%;
             height: 6px;
-            background: rgba(212, 163, 115, 0.12);
+            background: rgba(244, 43, 85, 0.1);
             border-radius: 999px;
             overflow: hidden;
             position: relative;
@@ -1306,15 +1403,15 @@ render_html(
 
         .progress-fill.green {
             background: linear-gradient(90deg, #059669, #10b981);
-            box-shadow: 0 0 10px rgba(16, 185, 129, 0.5);
+            box-shadow: 0 0 10px rgba(16, 185, 129, 0.4);
         }
         .progress-fill.orange {
             background: linear-gradient(90deg, #d97706, #f59e0b);
-            box-shadow: 0 0 10px rgba(245, 158, 11, 0.5);
+            box-shadow: 0 0 10px rgba(245, 158, 11, 0.4);
         }
         .progress-fill.red {
             background: linear-gradient(90deg, #b91c1c, #ef4444);
-            box-shadow: 0 0 10px rgba(239, 68, 68, 0.5);
+            box-shadow: 0 0 10px rgba(239, 68, 68, 0.4);
         }
 
 
@@ -1322,22 +1419,22 @@ render_html(
            TABLES WITH PROPER BORDERS, MARGINS & STYLING
            ================================================== */
         div[data-testid="stDataFrame"] {
-            border: 1px solid rgba(212, 163, 115, 0.28) !important;
+            border: 1px solid rgba(244, 43, 85, 0.16) !important;
             border-radius: 16px !important;
-            background: rgba(32, 22, 16, 0.88) !important;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 245, 235, 0.05) !important;
+            background: #ffffff !important;
+            box-shadow: 0 8px 24px rgba(244, 43, 85, 0.06) !important;
             overflow: hidden !important;
             margin: 1.5rem 0 2rem 0 !important;
         }
 
         .factory-table-card {
-            background: rgba(32, 22, 16, 0.88);
-            border: 1px solid rgba(212, 163, 115, 0.28);
+            background: #ffffff;
+            border: 1px solid rgba(244, 43, 85, 0.16);
             border-radius: 14px;
             padding: 0;
             overflow: hidden;
             margin: 0.75rem 0 1.5rem 0;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 245, 235, 0.05);
+            box-shadow: 0 8px 24px rgba(244, 43, 85, 0.06);
             backdrop-filter: blur(14px);
         }
 
@@ -1354,7 +1451,7 @@ render_html(
             border-spacing: 0;
             font-family: inherit;
             font-size: 0.83rem;
-            color: #f7efe6;
+            color: #1e293b;
         }
 
         .factory-modern-table thead {
@@ -1364,15 +1461,15 @@ render_html(
         }
 
         .factory-modern-table th {
-            background: linear-gradient(180deg, #2d1d15 0%, #1f140e 100%);
-            color: #f7efe6;
+            background: #fff0f3;
+            color: #0f172a;
             font-size: 0.75rem;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 0.06em;
             padding: 9px 12px;
-            border-bottom: 2px solid rgba(212, 163, 115, 0.4);
-            border-right: 1px solid rgba(212, 163, 115, 0.15);
+            border-bottom: 2px solid rgba(244, 43, 85, 0.28);
+            border-right: 1px solid rgba(244, 43, 85, 0.1);
             white-space: nowrap;
             text-align: left;
         }
@@ -1386,22 +1483,22 @@ render_html(
         }
 
         .factory-modern-table tbody tr:nth-child(odd) {
-            background: rgba(32, 22, 16, 0.72);
+            background: #ffffff;
         }
 
         .factory-modern-table tbody tr:nth-child(even) {
-            background: rgba(24, 16, 11, 0.55);
+            background: #fffbfc;
         }
 
         .factory-modern-table tbody tr:hover {
-            background: rgba(184, 115, 51, 0.22) !important;
+            background: rgba(244, 43, 85, 0.06) !important;
         }
 
         .factory-modern-table td {
             padding: 8px 12px;
-            border-bottom: 1px solid rgba(212, 163, 115, 0.12);
-            border-right: 1px solid rgba(212, 163, 115, 0.08);
-            color: #fdfbf7;
+            border-bottom: 1px solid rgba(244, 43, 85, 0.09);
+            border-right: 1px solid rgba(244, 43, 85, 0.06);
+            color: #1e293b;
             vertical-align: middle;
             font-size: 0.83rem;
             line-height: 1.35;
@@ -1415,7 +1512,6 @@ render_html(
             border-bottom: none;
         }
 
-        /* Status Badges inside table */
         .tbl-badge {
             display: inline-flex;
             align-items: center;
@@ -1428,21 +1524,21 @@ render_html(
         }
 
         .tbl-badge.badge-green {
-            background: rgba(16, 185, 129, 0.16);
-            border: 1px solid rgba(16, 185, 129, 0.45);
-            color: #34d399;
+            background: rgba(16, 185, 129, 0.12);
+            border: 1px solid rgba(16, 185, 129, 0.4);
+            color: #059669;
         }
 
         .tbl-badge.badge-amber {
-            background: rgba(245, 158, 11, 0.16);
-            border: 1px solid rgba(245, 158, 11, 0.45);
-            color: #fbbf24;
+            background: rgba(245, 158, 11, 0.12);
+            border: 1px solid rgba(245, 158, 11, 0.4);
+            color: #d97706;
         }
 
         .tbl-badge.badge-red {
-            background: rgba(239, 68, 68, 0.16);
-            border: 1px solid rgba(239, 68, 68, 0.45);
-            color: #f87171;
+            background: rgba(239, 68, 68, 0.12);
+            border: 1px solid rgba(239, 68, 68, 0.4);
+            color: #dc2626;
         }
 
         .badge-dot {
@@ -1462,10 +1558,10 @@ render_html(
            ================================================== */
 
         .stButton > button {
-            background: rgba(38, 25, 18, 0.75) !important;
-            border: 1px solid rgba(212, 163, 115, 0.32) !important;
+            background: #ffffff !important;
+            border: 1px solid rgba(244, 43, 85, 0.32) !important;
             border-radius: 8px !important;
-            color: #f7efe6 !important;
+            color: #f42b55 !important;
             height: 35px !important;
             min-height: 35px !important;
             font-size: 0.82rem !important;
@@ -1473,14 +1569,14 @@ render_html(
             padding: 0 10px !important;
             white-space: nowrap !important;
             transition: all 0.2s ease !important;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25) !important;
+            box-shadow: 0 2px 6px rgba(244, 43, 85, 0.08) !important;
         }
 
         .stButton > button:hover {
-            background: rgba(184, 115, 51, 0.3) !important;
-            border-color: #c27d38 !important;
+            background: linear-gradient(135deg, #f42b55 0%, #e11d48 100%) !important;
+            border-color: #f42b55 !important;
             color: #ffffff !important;
-            box-shadow: 0 0 15px rgba(184, 115, 51, 0.4) !important;
+            box-shadow: 0 4px 14px rgba(244, 43, 85, 0.35) !important;
             transform: translateY(-1px) !important;
         }
 
@@ -1491,89 +1587,62 @@ render_html(
             width: 100%;
             height: 44px;
             box-sizing: border-box;
-            background: rgba(38, 25, 18, 0.75);
-            border: 1px solid rgba(212, 163, 115, 0.32);
+            background: #ffffff;
+            border: 1px solid rgba(244, 43, 85, 0.25);
             border-radius: 8px;
-            color: #f7efe6;
+            color: #f42b55;
             font-size: 0.9rem;
             font-weight: 600;
             text-decoration: none;
+            box-shadow: 0 2px 6px rgba(244, 43, 85, 0.06);
             transition: all 0.2s ease;
         }
 
         .quick-action-link:hover {
-            background: rgba(184, 115, 51, 0.3);
-            border-color: #c27d38;
+            background: linear-gradient(135deg, #f42b55 0%, #e11d48 100%);
+            border-color: #f42b55;
             color: #ffffff;
-            box-shadow: 0 0 15px rgba(184, 115, 51, 0.4);
+            box-shadow: 0 6px 18px rgba(244, 43, 85, 0.35);
             transform: translateY(-1px);
         }
 
-        /* Search inputs & general text inputs in dashboard sections */
         div[data-testid="stTextInput"] label p {
-            color: #e8c89b !important;
+            color: #0f172a !important;
             font-size: 0.88rem !important;
             font-weight: 600 !important;
             margin-bottom: 0.35rem !important;
         }
 
         div[data-testid="stTextInput"] > div {
-            border: 1px solid rgba(212, 163, 115, 0.32) !important;
-            background: rgba(28, 18, 12, 0.85) !important;
+            border: 1px solid rgba(244, 43, 85, 0.25) !important;
+            background: #ffffff !important;
             border-radius: 12px !important;
-            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25) !important;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04) !important;
             transition: all 0.2s ease !important;
         }
 
         div[data-testid="stTextInput"] > div:hover {
-            border-color: rgba(226, 180, 130, 0.6) !important;
-            box-shadow: 0 0 14px rgba(194, 125, 56, 0.3) !important;
+            border-color: #f42b55 !important;
+            box-shadow: 0 0 12px rgba(244, 43, 85, 0.2) !important;
         }
 
         div[data-testid="stTextInput"] input {
-            color: #fdfbf7 !important;
+            color: #0f172a !important;
             background-color: transparent !important;
             background: transparent !important;
             font-size: 0.92rem !important;
         }
 
         div[data-testid="stTextInput"] input::placeholder {
-            color: #a89685 !important;
+            color: #94a3b8 !important;
         }
-
-        [class*="st-key-login_form_side"] div[data-testid="stTextInput"] input,
-        [class*="st-key-login_form_side"] .stTextInput input,
-        [class*="st-key-login_form_side"] input,
-        [class*="st-key-login_form_side"] input:focus {
-            color: #ffffff !important;
-            -webkit-text-fill-color: #ffffff !important;
-            caret-color: #ffffff !important;
-        }
-
-        [class*="st-key-login_form_side"] div[data-testid="stTextInput"] input:-webkit-autofill,
-        [class*="st-key-login_form_side"] div[data-testid="stTextInput"] input:-webkit-autofill:hover,
-        [class*="st-key-login_form_side"] div[data-testid="stTextInput"] input:-webkit-autofill:focus {
-            -webkit-text-fill-color: #ffffff !important;
-            -webkit-box-shadow: 0 0 0px 1000px rgba(32, 22, 16, 0.95) inset !important;
-            transition: background-color 5000s ease-in-out 0s !important;
-        }
-
-
-        /* ==================================================
-           FOOTER
-           ================================================== */
 
         .footer-note {
-            color: #a89685 !important;
+            color: #64748b !important;
             font-size: 0.75rem;
             text-align: center;
             margin-top: 1.5rem;
         }
-
-
-        /* ==================================================
-           HIDE STREAMLIT DECORATIONS
-           ================================================== */
 
         #MainMenu {
             visibility: hidden;
@@ -1587,13 +1656,7 @@ render_html(
             background: transparent;
         }
 
-
-        /* ==================================================
-           MOBILE
-           ================================================== */
-
         @media (max-width: 768px) {
-
             .factory-section {
                 padding: 1.2rem 1rem 1.5rem 1rem;
                 border-radius: 16px;
@@ -1602,44 +1665,9 @@ render_html(
             .section-main-title {
                 font-size: 1.55rem;
             }
-
-            .login-shell {
-                height: 100dvh;
-                min-height: 0;
-                padding: 1rem;
-                align-items: center;
-                inset: 8px;
-            }
-
-            .login-hero-copy {
-                padding: 1.35rem;
-            }
-
-            .login-hero-feature {
-                display: none;
-            }
-
-            .login-shell::before {
-                display: none;
-            }
-
-            [class*="st-key-login-card"] {
-                width: auto;
-                max-width: none;
-                height: auto;
-                min-height: auto;
-                top: auto;
-                right: 8px;
-                bottom: 8px;
-                left: 8px;
-                margin: 0;
-                padding: 1.25rem;
-                border-radius: 22px;
-                background: rgba(38, 25, 18, 0.92);
-            }
         }
 
-    </style>
+    </style>    </style>
     """
 )
 
@@ -1654,59 +1682,114 @@ def inject_scroll_spy():
         """
         <script>
         (() => {
-            const appDocument = window.parent.document;
-            const links = Array.from(appDocument.querySelectorAll(".factory-nav-btn"));
-            const sections = links
-                .map((link) => appDocument.querySelector(link.getAttribute("href")))
-                .filter(Boolean);
-            const scrollContainer = appDocument.querySelector('section[data-testid="stMain"]');
+            const parentDoc = window.parent.document;
+            const parentWin = window.parent;
 
-            if (!links.length || !sections.length || !scrollContainer) return;
-
-            let isClickScrolling = false;
-            let clickTimer = null;
-
-            links.forEach((link) => {
-                link.addEventListener("click", () => {
-                    isClickScrolling = true;
-                    links.forEach((l) => l.classList.toggle("nav-item-active", l === link));
-                    clearTimeout(clickTimer);
-                    clickTimer = setTimeout(() => {
-                        isClickScrolling = false;
-                    }, 1200);
-                });
-            });
-
-            const updateActivePage = () => {
-                if (isClickScrolling) return;
-
-                const scrollDistFromBottom = scrollContainer.scrollHeight - scrollContainer.scrollTop - scrollContainer.clientHeight;
-                if (scrollDistFromBottom < 80) {
-                    const lastSection = sections[sections.length - 1];
-                    links.forEach((link) => {
-                        const isActive = link.getAttribute("href") === `#${lastSection.id}`;
-                        link.classList.toggle("nav-item-active", isActive);
-                    });
+            function attachNavSystem() {
+                const links = Array.from(parentDoc.querySelectorAll(".factory-nav-btn"));
+                if (!links.length) {
+                    setTimeout(attachNavSystem, 150);
                     return;
                 }
 
-                const containerTop = scrollContainer.getBoundingClientRect().top;
-                const marker = scrollContainer.scrollTop + 180;
-                let activeSection = sections[0];
-
-                sections.forEach((section) => {
-                    const sectionTop = section.getBoundingClientRect().top - containerTop + scrollContainer.scrollTop;
-                    if (sectionTop <= marker) activeSection = section;
-                });
-
                 links.forEach((link) => {
-                    const isActive = link.getAttribute("href") === `#${activeSection.id}`;
-                    link.classList.toggle("nav-item-active", isActive);
-                });
-            };
+                    if (link.dataset.hasClickListener) return;
+                    link.dataset.hasClickListener = "true";
 
-            scrollContainer.addEventListener("scroll", updateActivePage, { passive: true });
-            updateActivePage();
+                    link.addEventListener("click", function(e) {
+                        e.preventDefault();
+                        e.stopPropagation();
+
+                        // 1. Instantly highlight clicked button
+                        links.forEach(l => l.classList.remove("active", "nav-item-active"));
+                        this.classList.add("active", "nav-item-active");
+
+                        // 2. Smoothly scroll to target section with offset
+                        const targetId = this.getAttribute("data-target") || (this.getAttribute("href") || "").replace("#", "");
+                        const targetEl = parentDoc.getElementById(targetId);
+
+                        if (targetEl) {
+                            parentWin.isClickScrolling = true;
+                            clearTimeout(parentWin.clickScrollTimer);
+
+                            const headerOffset = 120;
+                            const scrollContainer = parentDoc.querySelector('section[data-testid="stMain"]') || parentDoc.querySelector('.main');
+
+                            if (scrollContainer) {
+                                const cTop = scrollContainer.getBoundingClientRect().top;
+                                const elTop = targetEl.getBoundingClientRect().top;
+                                const targetY = scrollContainer.scrollTop + (elTop - cTop) - headerOffset;
+                                scrollContainer.scrollTo({ top: Math.max(0, targetY), behavior: "smooth" });
+                            }
+                            const winY = targetEl.getBoundingClientRect().top + parentWin.pageYOffset - headerOffset;
+                            parentWin.scrollTo({ top: Math.max(0, winY), behavior: "smooth" });
+
+                            parentWin.clickScrollTimer = setTimeout(() => {
+                                parentWin.isClickScrolling = false;
+                            }, 1600);
+                        }
+                    });
+                });
+
+                // Scroll-spy: update active nav button when scrolling past sections
+                const updateActiveOnScroll = () => {
+                    if (parentWin.isClickScrolling) return;
+
+                    const scrollContainer = parentDoc.querySelector('section[data-testid="stMain"]') || parentDoc.querySelector('.main');
+                    const scrollTop = scrollContainer ? scrollContainer.scrollTop : (parentWin.pageYOffset || parentDoc.documentElement.scrollTop || 0);
+                    const scrollHeight = scrollContainer ? scrollContainer.scrollHeight : parentDoc.documentElement.scrollHeight;
+                    const clientHeight = scrollContainer ? scrollContainer.clientHeight : parentWin.innerHeight;
+                    const containerTop = scrollContainer ? scrollContainer.getBoundingClientRect().top : 0;
+
+                    const distFromBottom = scrollHeight - (scrollTop + clientHeight);
+
+                    // 1. If at bottom of page (within 85px), Help is the active section
+                    if (distFromBottom <= 85) {
+                        const lastLink = links[links.length - 1];
+                        if (lastLink && !lastLink.classList.contains("nav-item-active")) {
+                            links.forEach(l => l.classList.remove("active", "nav-item-active"));
+                            lastLink.classList.add("active", "nav-item-active");
+                        }
+                        return;
+                    }
+
+                    // 2. Adaptive threshold for sections:
+                    // As the page scrolls down towards the bottom, the detection threshold adapts
+                    // so lower sections like Incidents highlight reliably when scrolled into view,
+                    // without increasing any section or button width/height.
+                    const maxScroll = Math.max(1, scrollHeight - clientHeight);
+                    const scrollRatio = Math.min(1, Math.max(0, scrollTop / maxScroll));
+                    const triggerThreshold = 155 + (scrollRatio * (clientHeight * 0.44));
+
+                    let activeLink = links[0];
+                    links.forEach((link) => {
+                        const targetId = link.getAttribute("data-target") || (link.getAttribute("href") || "").replace("#", "");
+                        const targetEl = parentDoc.getElementById(targetId);
+                        if (targetEl) {
+                            const elTop = targetEl.getBoundingClientRect().top - containerTop;
+                            if (elTop <= triggerThreshold) {
+                                activeLink = link;
+                            }
+                        }
+                    });
+
+                    if (activeLink && !activeLink.classList.contains("nav-item-active")) {
+                        links.forEach(l => l.classList.remove("active", "nav-item-active"));
+                        activeLink.classList.add("active", "nav-item-active");
+                    }
+                };
+
+                const scrollContainer = parentDoc.querySelector('section[data-testid="stMain"]') || parentDoc.querySelector('.main');
+                if (scrollContainer) {
+                    scrollContainer.removeEventListener("scroll", updateActiveOnScroll);
+                    scrollContainer.addEventListener("scroll", updateActiveOnScroll, { passive: true });
+                }
+                parentWin.removeEventListener("scroll", updateActiveOnScroll);
+                parentWin.addEventListener("scroll", updateActiveOnScroll, { passive: true });
+            }
+
+            attachNavSystem();
+            setInterval(attachNavSystem, 600);
         })();
         </script>
         """,
@@ -1890,7 +1973,7 @@ def metric_card(
 ):
     stroke_colors = {
         "red": "#ef4444",
-        "blue": "#c27d38",
+        "blue": "#f42b55",
         "green": "#10b981",
         "orange": "#f59e0b",
         "cyan": "#06b6d4",
@@ -1900,7 +1983,7 @@ def metric_card(
     }
     bg_tints = {
         "red": "rgba(239, 68, 68, 0.16)",
-        "blue": "rgba(194, 125, 56, 0.16)",
+        "blue": "rgba(244, 43, 85, 0.12)",
         "green": "rgba(16, 185, 129, 0.16)",
         "orange": "rgba(245, 158, 11, 0.16)",
         "cyan": "rgba(6, 182, 212, 0.16)",
@@ -1910,7 +1993,7 @@ def metric_card(
     }
     border_tints = {
         "red": "rgba(239, 68, 68, 0.35)",
-        "blue": "rgba(194, 125, 56, 0.35)",
+        "blue": "rgba(244, 43, 85, 0.3)",
         "green": "rgba(16, 185, 129, 0.35)",
         "orange": "rgba(245, 158, 11, 0.35)",
         "cyan": "rgba(6, 182, 212, 0.35)",
@@ -1919,9 +2002,9 @@ def metric_card(
         "pink": "rgba(236, 72, 153, 0.35)",
     }
 
-    stroke = stroke_colors.get(color, "#c27d38")
-    bg_tint = bg_tints.get(color, "rgba(194, 125, 56, 0.16)")
-    border_tint = border_tints.get(color, "rgba(194, 125, 56, 0.35)")
+    stroke = stroke_colors.get(color, "#f42b55")
+    bg_tint = bg_tints.get(color, "rgba(244, 43, 85, 0.12)")
+    border_tint = border_tints.get(color, "rgba(244, 43, 85, 0.3)")
 
     raw_icons = {
         "shield": f'<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="{stroke}" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>',
@@ -1957,7 +2040,7 @@ def metric_card(
     spark_img_html = svg_to_img(spark_raw, 125, 40, f"position:absolute; right:8px; bottom:6px; pointer-events:none; filter:drop-shadow(0 0 6px {stroke});")
     sparkline_html = f'<div class="kpi-sparkline-wrap">{spark_img_html}</div>' if show_sparkline else ""
 
-    val_style = f"color: #ef4444; text-shadow: 0 0 16px rgba(239, 68, 68, 0.45);" if color == "red" else "color: #ffffff;"
+    val_style = "color: #ef4444;" if color == "red" else "color: #0f172a;"
     unit_html = f'<span class="metric-unit">{unit}</span>' if unit else ""
 
     render_html(
@@ -1972,10 +2055,7 @@ def metric_card(
                     <div class="kpi-value" style="{val_style}">{value}{unit_html}</div>
                 </div>
             </div>
-            <div class="kpi-bottom-row">
-                <div class="kpi-delta" style="color:{stroke};">{note}</div>
-                {sparkline_html}
-            </div>
+            {f'<div class="kpi-bottom-row"><div class="kpi-delta" style="color:{stroke};">{note}</div>{sparkline_html}</div>' if (note or sparkline_html) else ''}
         </div>
         """
     )
@@ -2012,11 +2092,11 @@ def format_cell_value(col_name: str, val: Any) -> str:
 
     if isinstance(val, float):
         if "score" in col_name.lower() or "prob" in col_name.lower() or "percent" in col_name.lower() or "availability" in col_name.lower():
-            return f'<span style="font-weight:600; color:#e8c89b;">{val:.1f}%</span>'
+            return f'<span style="font-weight:600; color:#f42b55;">{val:.1f}%</span>'
         return f'{val:.2f}'
     elif isinstance(val, int) and not isinstance(val, bool):
         if "score" in col_name.lower() or "prob" in col_name.lower() or "percent" in col_name.lower():
-            return f'<span style="font-weight:600; color:#e8c89b;">{val}%</span>'
+            return f'<span style="font-weight:600; color:#f42b55;">{val}%</span>'
         return f'{val:,}'
 
     return val_str
@@ -2083,11 +2163,10 @@ def section_start(
         banner_b64 = get_banner_img_base64()
         render_html(
             f"""
-            <section id="{section_id}" style="width:100%;">
+            <div id="{section_id}" style="width:100%;">
                 <div class="dashboard-hero-banner">
                     <div class="banner-content">
                         <div class="banner-text-side">
-                            <div class="banner-kicker">SECTION {number}</div>
                             <div class="banner-main-title">{title}</div>
                             <div class="banner-accent-bar"></div>
                             <div class="banner-subtitle">Real-time overview of your factory operations and predictive insights</div>
@@ -2097,24 +2176,17 @@ def section_start(
                         </div>
                     </div>
                 </div>
+            </div>
             """
         )
     else:
         render_html(
             f"""
-            <section
-                id="{section_id}"
-                class="factory-section"
-            >
+            <div id="{section_id}" class="factory-section">
                 <div class="section-header">
-                    <div class="section-kicker">
-                        SECTION {number}
-                    </div>
-                    <div class="section-main-title">
-                        {title}
-                    </div>
-                    <div class="banner-accent-bar" style="margin-top:0.4rem;"></div>
+                    <div class="section-main-title">{title}</div>
                 </div>
+            </div>
             """
         )
 
@@ -2131,69 +2203,68 @@ def top_navigation(pages: List[str]):
     username = st.session_state.get("username", "Admin")
 
     bell_svg = svg_to_img('<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>', 18, 18)
-    profile_svg = svg_to_img('<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#dfba89" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>', 18, 18)
+    profile_svg = svg_to_img('<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#f42b55" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>', 18, 18)
 
-    # 1. Official Header Topbar: Brand on Left, Platform & Profile on Right
-    render_html(
-        f"""
-        <header class="factory-header-bar">
-            <div class="header-left">
-                <span class="header-brand-title">FactoryOps</span>
-                <span class="header-brand-sub">Smart Factory Intelligence</span>
-            </div>
-            <div class="header-right">
-                <span class="header-platform-note">Predictive Maintenance Platform</span>
-                <div class="header-icon-btn" title="System Notifications">
-                    {bell_svg}
-                    <span class="header-badge-dot"></span>
-                </div>
-                <div class="header-profile-badge" title="Logged in as {username}">
-                    {profile_svg}
-                </div>
-            </div>
-        </header>
-        """
-    )
-
-    # 2. Navigation Items + Top-Right Aligned Refresh / Logout Row
     nav_icons = {
-        "Dashboard": svg_to_img('<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>', 16, 16),
-        "Machines": svg_to_img('<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>', 16, 16),
-        "Sensors": svg_to_img('<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 0 1 10 10"/><path d="M12 6a6 6 0 0 1 6 6"/><path d="M12 10a2 2 0 0 1 2 2"/><circle cx="12" cy="12" r="1"/></svg>', 16, 16),
-        "Predictions": svg_to_img('<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>', 16, 16),
-        "Risk Analysis": svg_to_img('<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>', 16, 16),
-        "Maintenance": svg_to_img('<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>', 16, 16),
-        "Incidents": svg_to_img('<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>', 16, 16),
-        "Help": svg_to_img('<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>', 16, 16),
+        "Dashboard": svg_to_img('<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#64748b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>', 16, 16),
+        "Machines": svg_to_img('<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#64748b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>', 16, 16),
+        "Sensors": svg_to_img('<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#64748b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 0 1 10 10"/><path d="M12 6a6 6 0 0 1 6 6"/><path d="M12 10a2 2 0 0 1 2 2"/><circle cx="12" cy="12" r="1"/></svg>', 16, 16),
+        "Predictions": svg_to_img('<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#64748b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>', 16, 16),
+        "Risk Analysis": svg_to_img('<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#64748b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>', 16, 16),
+        "Maintenance": svg_to_img('<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#64748b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>', 16, 16),
+        "Incidents": svg_to_img('<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#64748b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>', 16, 16),
+        "Help": svg_to_img('<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#64748b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>', 16, 16),
     }
 
     links_html = []
     for i, page in enumerate(pages):
+        slug = f"factory-{page.lower().replace(' ', '-')}"
         active_cls = "nav-item-active" if i == 0 else ""
         icon = nav_icons.get(page, "")
         links_html.append(
-            f'<a href="#factory-{page.lower().replace(" ", "-")}" class="factory-nav-btn {active_cls}">'
+            f'<a href="#{slug}" class="factory-nav-btn {active_cls}" data-target="{slug}">'
             f'{icon}<span>{page}</span>'
             f'</a>'
         )
     nav_links_joined = "".join(links_html)
 
-    # Place nav items on the left and Refresh / Logout buttons on the top-right in one seamless row!
-    with st.container(key="sticky_navigation"):
-        nav_col, action_col = st.columns([8.0, 2.0], gap="small")
+    # Wrap the entire header and nav row in one constant fixed container
+    with st.container(key="factory_header_sticky"):
+        render_html(
+            f"""
+            <header class="factory-header-bar">
+                <div class="header-left">
+                    <span class="header-brand-title">FactoryOps</span>
+                    <span class="header-brand-sub">Smart Factory Intelligence</span>
+                </div>
+                <div class="header-right">
+                    <span class="header-platform-note">Predictive Maintenance Platform</span>
+                    <div class="header-icon-btn" title="System Notifications">
+                        {bell_svg}
+                        <span class="header-badge-dot"></span>
+                    </div>
+                    <div class="header-profile-badge" title="Logged in as {username}">
+                        {profile_svg}
+                    </div>
+                </div>
+            </header>
+            """
+        )
+
+        nav_col, action_col = st.columns([7.3, 2.7], gap="small")
         with nav_col:
             render_html(f'<div class="factory-nav-container">{nav_links_joined}</div>')
         with action_col:
             c1, c2 = st.columns(2, gap="small")
             with c1:
                 st.button(
-                    "🔄 Refresh",
+                    "Refresh",
                     use_container_width=True,
                     key="top_refresh",
                     on_click=st.rerun,
                 )
             with c2:
-                if st.button("🚪 Logout", use_container_width=True, key="top_logout"):
+                if st.button("Logout", use_container_width=True, key="top_logout"):
                     st.session_state.clear()
                     st.rerun()
 
@@ -2223,11 +2294,12 @@ def login_page():
         col1, col2 = st.columns([1, 1], gap="small")
 
         with col1:
+            mime = "image/png" if bg_base64.startswith("iVBORw0KGgo") else "image/jpeg"
             render_html(
                 f"""
-                <div class="login-hero-container" style="background-image: url('data:image/jpeg;base64,{bg_base64}');">
+                <div class="login-hero-container" style="background-image: url('data:{mime};base64,{bg_base64}');">
                     <div class="login-hero-content-box">
-                        <div class="hero-title-brand">FactoryOps</div>
+                        <div class="hero-title-brand">Factory<span>Ops</span></div>
                         <div class="hero-divider-bar"></div>
                         <div class="hero-tagline-text">Smart Operations. Stronger Tomorrow.</div>
                     </div>
@@ -2242,8 +2314,8 @@ def login_page():
                 (() => {
                     function applyMockupTheme() {
                         document.querySelectorAll('[data-testid="stTextInput"] div[data-baseweb="input"]').forEach(el => {
-                            el.style.setProperty('background-color', 'rgba(32, 22, 16, 0.85)', 'important');
-                            el.style.setProperty('border', '1.5px solid #b87333', 'important');
+                            el.style.setProperty('background-color', '#ffffff', 'important');
+                            el.style.setProperty('border', '1.5px solid rgba(244, 43, 85, 0.35)', 'important');
                             el.style.setProperty('border-radius', '12px', 'important');
                         });
                         document.querySelectorAll('[data-testid="stTextInput"] div[data-baseweb="input"] div, [data-testid="stTextInput"] div[data-baseweb="base-input"]').forEach(el => {
@@ -2252,15 +2324,15 @@ def login_page():
                         });
                         document.querySelectorAll('[data-testid="stTextInput"] input').forEach(el => {
                             el.style.setProperty('background-color', 'transparent', 'important');
-                            el.style.setProperty('color', '#ffffff', 'important');
-                            el.style.setProperty('-webkit-text-fill-color', '#ffffff', 'important');
+                            el.style.setProperty('color', '#0f172a', 'important');
+                            el.style.setProperty('-webkit-text-fill-color', '#0f172a', 'important');
                         });
                         document.querySelectorAll('[data-testid="stRadio"] [role="radiogroup"] input:checked').forEach(radio => {
                             const container = radio.closest('label');
                             if (container) {
                                 const dots = container.querySelectorAll('div > div');
                                 if (dots.length > 1) {
-                                    dots[1].style.setProperty('background-color', '#b87333', 'important');
+                                    dots[1].style.setProperty('background-color', '#f42b55', 'important');
                                 }
                             }
                         });
@@ -2447,7 +2519,7 @@ def dashboard_page():
             color="pink",
         )
 
-    pulse_icon = svg_to_img('<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#e8c89b" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>', 22, 22)
+    pulse_icon = svg_to_img('<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#f42b55" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>', 22, 22)
     render_html(
         f"""
         <div class="health-section-header">
@@ -2523,7 +2595,7 @@ def dashboard_page():
                     stroke-dasharray="{len_warn:.2f} {circ:.2f}" stroke-dashoffset="{offset_warn:.2f}" transform="rotate(-90 {cx_val} {cy_val})" />
                 <circle cx="{cx_val}" cy="{cy_val}" r="{r_val}" fill="none" stroke="#10b981" stroke-width="26"
                     stroke-dasharray="{len_hlth:.2f} {circ:.2f}" stroke-dashoffset="{offset_hlth:.2f}" transform="rotate(-90 {cx_val} {cy_val})" />
-                <circle cx="{cx_val}" cy="{cy_val}" r="39" fill="#201610" />
+                <circle cx="{cx_val}" cy="{cy_val}" r="39" fill="#ffffff" />
             </svg>"""
             donut_img_html = svg_to_img(donut_raw, 160, 160)
 
@@ -2792,7 +2864,34 @@ def sensors_page():
         if column in df.columns
     ]
 
-    units = {
+    short_units = {
+        "temperature": "°C",
+        "vibration": "mm/s",
+        "pressure": "bar",
+        "humidity": "%",
+        "voltage": "V",
+        "current": "A",
+    }
+
+    sensor_icons = {
+        "temperature": "critical",
+        "vibration": "health_rate",
+        "pressure": "warning",
+        "humidity": "availability",
+        "voltage": "alerts",
+        "current": "risk",
+    }
+
+    sensor_colors = {
+        "temperature": "red",
+        "vibration": "green",
+        "pressure": "orange",
+        "humidity": "cyan",
+        "voltage": "amber",
+        "current": "purple",
+    }
+
+    table_units = {
         "temperature": "Celsius (°C)",
         "vibration": "millimeters per second (mm/s)",
         "pressure": "bar",
@@ -2805,7 +2904,7 @@ def sensors_page():
 
         render_html(
             """
-            <div class="section-title">
+            <div class="section-title" style="color:#0f172a; font-size:1.15rem; font-weight:750; margin:1rem 0 0.6rem 0;">
                 Latest Reading
             </div>
             """
@@ -2826,13 +2925,17 @@ def sensors_page():
         ):
 
             with column:
+                unit = short_units.get(sensor_name, "")
+                raw_val = latest[sensor_name]
+                if isinstance(raw_val, float):
+                    value = f"{raw_val:.1f}"
+                elif isinstance(raw_val, int):
+                    value = f"{raw_val:,}"
+                else:
+                    value = str(raw_val)
 
-                unit = units.get(
-                    sensor_name,
-                    "",
-                )
-
-                value = fmt_number(latest[sensor_name])
+                s_icon = sensor_icons.get(sensor_name, "machines")
+                s_color = sensor_colors.get(sensor_name, "blue")
 
                 metric_card(
                     sensor_name.replace(
@@ -2841,18 +2944,20 @@ def sensors_page():
                     ).title(),
                     value,
                     unit=unit,
+                    icon=s_icon,
+                    color=s_color,
                     show_sparkline=False,
                 )
 
     render_html(
         """
-        <div class="section-title">
+        <div class="section-title" style="color:#0f172a; font-size:1.15rem; font-weight:750; margin:1.5rem 0 0.6rem 0;">
             Sensor Data
         </div>
         """
     )
 
-    display_table(df, units=units)
+    display_table(df, units=table_units)
 
     section_end()
 
@@ -3204,29 +3309,29 @@ def help_page():
 
     render_html(
         """
-        <div style="color: #f7efe6; font-size: 1rem; line-height: 1.7; max-width: 860px; margin-bottom: 1.4rem;">
+        <div style="color: #334155; font-size: 1rem; line-height: 1.7; max-width: 860px; margin-bottom: 1.4rem;">
             FactoryOps provides real-time machine telemetry, predictive failure analytics, and automated maintenance scheduling to maximize plant uptime.
             Use the top navigation bar to monitor live equipment status, inspect sensor parameters, or review high-risk operational incidents.
             For platform access, system configuration, or immediate technical assistance, reach out to our operations lead below.
         </div>
-        <div class="factory-support-card" style="background: rgba(32, 22, 16, 0.88); border: 1px solid rgba(212, 163, 115, 0.28); border-radius: 16px; padding: 1.6rem 2rem; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4); margin-top: 1rem;">
-            <div style="color: #e8c89b; font-size: 0.78rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 0.5rem;">
+        <div class="factory-support-card" style="background: #ffffff; border: 1px solid rgba(244, 43, 85, 0.18); border-radius: 16px; padding: 1.6rem 2rem; box-shadow: 0 10px 30px rgba(244, 43, 85, 0.08); margin-top: 1rem;">
+            <div style="color: #f42b55; font-size: 0.78rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 0.5rem;">
                 Platform Support & Inquiries
             </div>
             <div style="display: flex; flex-wrap: wrap; gap: 2rem; align-items: center; justify-content: space-between;">
                 <div>
-                    <div style="color: #fdfbf7; font-size: 1.4rem; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 0.25rem;">
+                    <div style="color: #0f172a; font-size: 1.4rem; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 0.25rem;">
                         Mahesh Kashyap
                     </div>
-                    <div style="color: #d5c6b6; font-size: 0.9rem; font-weight: 500;">
+                    <div style="color: #64748b; font-size: 0.9rem; font-weight: 500;">
                         Factory Operations & Platform Lead
                     </div>
                 </div>
                 <div style="display: flex; flex-wrap: wrap; gap: 1rem; align-items: center;">
-                    <a href="tel:+919151293352" style="display: inline-flex; align-items: center; gap: 0.5rem; color: #fdfbf7; text-decoration: none; background: rgba(184, 115, 51, 0.25); border: 1px solid rgba(212, 163, 115, 0.4); padding: 0.6rem 1.15rem; border-radius: 10px; font-size: 0.9rem; font-weight: 600; transition: all 0.2s ease;">
+                    <a href="tel:+919151293352" style="display: inline-flex; align-items: center; gap: 0.5rem; color: #f42b55; text-decoration: none; background: #fff0f3; border: 1px solid rgba(244, 43, 85, 0.3); padding: 0.6rem 1.15rem; border-radius: 10px; font-size: 0.9rem; font-weight: 600; transition: all 0.2s ease;">
                         <span>📞</span> +91 9151293352
                     </a>
-                    <a href="mailto:mahesh@gmail.com" style="display: inline-flex; align-items: center; gap: 0.5rem; color: #fdfbf7; text-decoration: none; background: rgba(184, 115, 51, 0.25); border: 1px solid rgba(212, 163, 115, 0.4); padding: 0.6rem 1.15rem; border-radius: 10px; font-size: 0.9rem; font-weight: 600; transition: all 0.2s ease;">
+                    <a href="mailto:mahesh@gmail.com" style="display: inline-flex; align-items: center; gap: 0.5rem; color: #f42b55; text-decoration: none; background: #fff0f3; border: 1px solid rgba(244, 43, 85, 0.3); padding: 0.6rem 1.15rem; border-radius: 10px; font-size: 0.9rem; font-weight: 600; transition: all 0.2s ease;">
                         <span>✉️</span> mahesh@gmail.com
                     </a>
                 </div>

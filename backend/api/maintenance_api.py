@@ -32,6 +32,7 @@ router = APIRouter(
 # GET ALL MAINTENANCE RECORDS
 # ============================================================
 
+@router.get("", response_model=List[MaintenanceResponse])
 @router.get(
     "/",
     response_model=List[MaintenanceResponse]

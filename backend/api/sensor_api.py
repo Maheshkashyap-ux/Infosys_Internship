@@ -28,6 +28,7 @@ router = APIRouter(
 # GET ALL SENSOR DATA
 # ============================================================
 
+@router.get("", response_model=List[SensorResponse])
 @router.get(
     "/",
     response_model=List[SensorResponse]

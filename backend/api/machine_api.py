@@ -47,6 +47,7 @@ def apply_current_health_status(db: Session, machine):
     return machine
 
 
+@router.get("", response_model=List[MachineResponse])
 @router.get(
     "/",
     response_model=List[MachineResponse]

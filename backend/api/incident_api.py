@@ -34,6 +34,7 @@ router = APIRouter(
 # GET ALL INCIDENTS
 # ============================================================
 
+@router.get("", response_model=List[IncidentResponse])
 @router.get(
     "/",
     response_model=List[IncidentResponse]

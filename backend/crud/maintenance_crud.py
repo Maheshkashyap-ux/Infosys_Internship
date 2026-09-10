@@ -7,6 +7,7 @@ Database operations for maintenance records.
 from sqlalchemy.orm import Session
 
 from backend.models.maintenance import Maintenance
+from backend.schemas.maintenance_schema import MaintenanceCreate
 
 
 # ============================================================
@@ -59,3 +60,25 @@ def get_maintenance_by_machine(
         )
         .all()
     )
+
+
+def create_maintenance(
+    db: Session,
+    maintenance_data: MaintenanceCreate
+):
+
+    maintenance = Maintenance(
+        machine_id=maintenance_data.machine_id,
+        maintenance_type=maintenance_data.maintenance_type,
+        priority=maintenance_data.priority,
+        engineer=maintenance_data.engineer,
+        scheduled_date=maintenance_data.scheduled_date,
+        completion_status=maintenance_data.completion_status,
+        remarks=maintenance_data.remarks
+    )
+
+    db.add(maintenance)
+    db.commit()
+    db.refresh(maintenance)
+
+    return maintenance

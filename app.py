@@ -2,6 +2,7 @@ import base64
 import os
 import textwrap
 import urllib.parse
+from datetime import datetime
 from typing import Any, Dict, List, Optional
 
 import pandas as pd
@@ -2238,7 +2239,6 @@ def top_navigation(pages: List[str]):
                     <span class="header-brand-sub">Smart Factory Intelligence</span>
                 </div>
                 <div class="header-right">
-                    <span class="header-platform-note">Predictive Maintenance Platform</span>
                     <div class="header-icon-btn" title="System Notifications">
                         {bell_svg}
                         <span class="header-badge-dot"></span>
@@ -2255,18 +2255,9 @@ def top_navigation(pages: List[str]):
         with nav_col:
             render_html(f'<div class="factory-nav-container">{nav_links_joined}</div>')
         with action_col:
-            c1, c2 = st.columns(2, gap="small")
-            with c1:
-                st.button(
-                    "Refresh",
-                    use_container_width=True,
-                    key="top_refresh",
-                    on_click=st.rerun,
-                )
-            with c2:
-                if st.button("Logout", use_container_width=True, key="top_logout"):
-                    st.session_state.clear()
-                    st.rerun()
+            if st.button("Logout", use_container_width=True, key="top_logout"):
+                st.session_state.clear()
+                st.rerun()
 
 
 # ============================================================
@@ -2763,36 +2754,95 @@ def machines_page():
 
         st.warning("No machines returned by the API.")
 
-        section_end()
-        return
+    else:
+        df = normalize_dataframe(rows)
 
-    df = normalize_dataframe(rows)
-
-    search = st.text_input(
-        "Search machine",
-        placeholder="Machine code or name",
-        key="machines_search",
-    )
-
-    if search:
-
-        mask = (
-            df.astype(str)
-            .apply(
-                lambda col: col.str.contains(
-                    search,
-                    case=False,
-                    na=False,
-                )
-            )
-            .any(axis=1)
+        search = st.text_input(
+            "Search machine",
+            placeholder="Machine code or name",
+            key="machines_search",
         )
 
-        df = df[mask]
+        if search:
 
-    display_table(df)
+            mask = (
+                df.astype(str)
+                .apply(
+                    lambda col: col.str.contains(
+                        search,
+                        case=False,
+                        na=False,
+                    )
+                )
+                .any(axis=1)
+            )
 
-    st.caption(f"{len(df)} machine(s) shown.")
+            df = df[mask]
+
+        display_table(df)
+
+        st.caption(f"{len(df)} machine(s) shown.")
+
+    if st.session_state.get("role") == "admin":
+        with st.expander("Admin machine controls"):
+            add_col, remove_col = st.columns(2)
+
+            with add_col:
+                st.markdown("**Add machine**")
+                with st.form("add_machine_form", clear_on_submit=True):
+                    machine_code = st.text_input("Machine code")
+                    machine_name = st.text_input("Machine name")
+                    machine_type = st.text_input("Machine type")
+                    department = st.text_input("Department")
+                    operating_hours = st.number_input(
+                        "Operating hours",
+                        min_value=0.0,
+                        step=1.0,
+                    )
+                    add_machine = st.form_submit_button(
+                        "Add machine",
+                        type="primary",
+                    )
+
+                if add_machine:
+                    payload = {
+                        "machine_code": machine_code.strip(),
+                        "machine_name": machine_name.strip(),
+                        "machine_type": machine_type.strip(),
+                        "department": department.strip(),
+                        "operating_hours": operating_hours,
+                        "health_status": "Healthy",
+                    }
+                    if not all(payload[key] for key in (
+                        "machine_code",
+                        "machine_name",
+                        "machine_type",
+                        "department",
+                    )):
+                        st.error("Complete all machine fields before adding it.")
+                    else:
+                        try:
+                            api_request("POST", "/machines/", json=payload)
+                            st.success("Machine added.")
+                            st.rerun()
+                        except Exception as exc:
+                            st.error(f"Could not add machine: {exc}")
+
+            with remove_col:
+                st.markdown("**Remove machine**")
+                remove_id = st.number_input(
+                    "Machine ID to remove",
+                    min_value=1,
+                    step=1,
+                    key="admin_remove_machine_id",
+                )
+                if st.button("Remove machine", key="admin_remove_machine"):
+                    try:
+                        api_request("DELETE", f"/machines/{int(remove_id)}")
+                        st.success("Machine removed.")
+                        st.rerun()
+                    except Exception as exc:
+                        st.error(f"Could not remove machine: {exc}")
 
     section_end()
 
@@ -3170,6 +3220,62 @@ def maintenance_page():
     else:
 
         st.info("No maintenance records are currently available.")
+
+    if st.session_state.get("role") == "admin":
+        with st.expander("Admin repair controls"):
+            st.markdown("**Log a maintenance or repair job**")
+            with st.form("add_maintenance_form", clear_on_submit=True):
+                repair_machine_id = st.number_input(
+                    "Machine ID",
+                    min_value=1,
+                    step=1,
+                    key="admin_repair_machine_id",
+                )
+                repair_type = st.text_input(
+                    "Repair type",
+                    value="Corrective repair",
+                )
+                repair_priority = st.selectbox(
+                    "Priority",
+                    ["Low", "Medium", "High", "Critical"],
+                )
+                repair_engineer = st.text_input("Engineer")
+                repair_date = st.date_input(
+                    "Scheduled date",
+                    value=datetime.utcnow().date(),
+                )
+                repair_status = st.selectbox(
+                    "Status",
+                    ["Scheduled", "In Progress", "Completed", "Cancelled"],
+                )
+                repair_remarks = st.text_area("Remarks")
+                add_repair = st.form_submit_button(
+                    "Save repair job",
+                    type="primary",
+                )
+
+            if add_repair:
+                payload = {
+                    "machine_id": int(repair_machine_id),
+                    "maintenance_type": repair_type.strip(),
+                    "priority": repair_priority,
+                    "engineer": repair_engineer.strip(),
+                    "scheduled_date": datetime.combine(
+                        repair_date,
+                        datetime.min.time(),
+                    ).isoformat(),
+                    "completion_status": repair_status,
+                    "remarks": repair_remarks.strip(),
+                }
+                if not payload["maintenance_type"] or not payload["engineer"]:
+                    st.error("Enter a repair type and engineer.")
+                else:
+                    try:
+                        api_request("POST", "/maintenance/", json=payload)
+                        st.success("Repair job saved.")
+                        st.rerun()
+                    except Exception as exc:
+                        st.error(f"Could not save repair job: {exc}")
 
     render_html(
         """

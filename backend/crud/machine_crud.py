@@ -58,3 +58,19 @@ def create_machine(
     db.refresh(machine)
 
     return machine
+
+
+def delete_machine(
+    db: Session,
+    machine_id: int
+):
+
+    machine = get_machine_by_id(db, machine_id)
+
+    if machine is None:
+        return None
+
+    db.delete(machine)
+    db.commit()
+
+    return machine

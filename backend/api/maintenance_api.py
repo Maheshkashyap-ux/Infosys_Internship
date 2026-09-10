@@ -14,10 +14,12 @@ from backend.database import get_db
 from backend.crud.maintenance_crud import (
     get_all_maintenance,
     get_maintenance_by_id,
-    get_maintenance_by_machine
+    get_maintenance_by_machine,
+    create_maintenance
 )
 
 from backend.schemas.maintenance_schema import (
+    MaintenanceCreate,
     MaintenanceResponse
 )
 
@@ -26,6 +28,24 @@ router = APIRouter(
     prefix="/maintenance",
     tags=["Maintenance"]
 )
+
+
+@router.post(
+    "",
+    response_model=MaintenanceResponse,
+    status_code=201
+)
+@router.post(
+    "/",
+    response_model=MaintenanceResponse,
+    status_code=201
+)
+def create_maintenance_record(
+    maintenance_data: MaintenanceCreate,
+    db: Session = Depends(get_db)
+):
+
+    return create_maintenance(db, maintenance_data)
 
 
 # ============================================================

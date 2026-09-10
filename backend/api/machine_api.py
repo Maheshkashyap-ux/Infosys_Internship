@@ -9,7 +9,8 @@ from backend.crud.machine_crud import (
     get_all_machines,
     get_machine_by_id,
     get_machine_by_code,
-    create_machine
+    create_machine,
+    delete_machine
 )
 from backend.crud.prediction_crud import calculate_prediction
 
@@ -136,3 +137,23 @@ def create_new_machine(
         db,
         machine_data
     )
+
+
+@router.delete(
+    "/{machine_id}",
+    status_code=204
+)
+def delete_existing_machine(
+    machine_id: int,
+    db: Session = Depends(get_db)
+):
+
+    machine = delete_machine(db, machine_id)
+
+    if machine is None:
+        raise HTTPException(
+            status_code=404,
+            detail="Machine not found"
+        )
+
+    return None
